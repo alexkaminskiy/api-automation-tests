@@ -1,0 +1,8 @@
+requests>=2.25.0
+pytest>=6.0.0
+allure-pytest>=2.9.45
+PyYAML>=5.3.1
+pytest-xdist>=2.0.0
+
+# Optional: install Allure CLI separately for viewing reports
+# On Windows you can use Scoop or download from https://docs.qameta.io/allure/
