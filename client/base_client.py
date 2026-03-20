@@ -1,6 +1,6 @@
 import requests
 from typing import Optional
-from config.settings import BASE_URL
+from config.settings import BASE_URL, AUTH_USER, AUTH_PASSWORD
 
 class BaseClient:
     def __init__(self, base_url: Optional[str] = BASE_URL, token: str = None, timeout: int = 10):
@@ -20,7 +20,7 @@ class BaseClient:
 
     def _get_token(self) -> str:
 
-        r = requests.post(f"{self.base_url}/api/Authenticate/Login", json={"username": "admin", "password": "password"})
+        r = requests.post(f"{self._build_url('/api/Authenticate/Login')}", json={"username": AUTH_USER, "password": AUTH_PASSWORD})
         token = r.json().get("token")
         return token
 
