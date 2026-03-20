@@ -1,13 +1,28 @@
 import requests
 from typing import Optional
+from config.settings import BASE_URL
 
-
-class APIClient:
-    def __init__(self, base_url: Optional[str] = None, timeout: int = 10):
+class BaseClient:
+    def __init__(self, base_url: Optional[str] = BASE_URL, token: str = None, timeout: int = 10):
         self.base_url = base_url.rstrip("/") if base_url else ""
         self.timeout = timeout
         self.session = requests.Session()
         self.last_response = None
+        self.token = token if token else self._get_token()
+
+    
+    @property
+    def headers(self):
+        h = {"Content-Type": "application/json"}
+        if self.token:
+            h["Authorization"] = f"Bearer {self.token}"
+        return h
+
+    def _get_token(self) -> str:
+
+        r = requests.post(f"{self.base_url}/api/Authenticate/Login", json={"username": "admin", "password": "password"})
+        token = r.json().get("token")
+        return token
 
     def _build_url(self, path: str) -> str:
         if path.startswith("http://") or path.startswith("https://"):
@@ -17,15 +32,16 @@ class APIClient:
     def request(self, method: str, path: str, **kwargs) -> requests.Response:
         url = self._build_url(path)
         kwargs.setdefault("timeout", self.timeout)
-        resp = self.session.request(method, url, **kwargs)
+        resp = self.session.request(method, url, headers=self.headers, **kwargs)
         self.last_response = resp
         return resp
 
     def get(self, path: str, params: dict = None, **kwargs) -> requests.Response:
         return self.request("GET", path, params=params, **kwargs)
 
-    def post(self, path: str, json: dict = None, data: dict = None, **kwargs) -> requests.Response:
-        return self.request("POST", path, json=json, data=data, **kwargs)
+    def post(self, path: str, json: dict = None, files: dict = None, **kwargs) -> requests.Response:
+        r = self.request("POST", path, json=json, files=files, **kwargs)
+        return r
 
     def put(self, path: str, json: dict = None, **kwargs) -> requests.Response:
         return self.request("PUT", path, json=json, **kwargs)

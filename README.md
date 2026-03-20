@@ -1,6 +1,6 @@
 # API Automation Tests
 
-This project is a API automation test suite using pytest, Requests, and Allure.
+This project is an API automation test suite using pytest, Requests, and Allure.
 
 ## Setup
 
@@ -27,12 +27,16 @@ It is recommended to use a virtual environment to manage dependencies.
    ```bash
    source venv/bin/activate
    ```
-3. Install dependencies:
+
+### Install dependencies
    ```bash
    pip install -r requirements.txt
    ```
+
 ### Run tests and generate Allure report
-1. Run tests:
+1. Configure `config/config.yaml` or set environment variable `API_BASE_URL`.
+
+2. Run tests:
    ```bash
    pytest --alluredir=reports
    ```
@@ -40,3 +44,9 @@ It is recommended to use a virtual environment to manage dependencies.
 2. Generate Allure report:
    ```bash
    allure serve reports
+   ```
+
+Notes
+- `tests/conftest.py` provides a `client` fixture returning an `APIClient`.
+- `src/api_client.py` is a thin wrapper over `requests.Session` that stores the last response for debugging/attachments.
+- On test failure the last response body is attached to Allure results automatically.
