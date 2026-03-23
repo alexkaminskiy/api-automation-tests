@@ -41,11 +41,12 @@ jobs:
     - name: Verify Allure Installation
       run: allure --version
 
-      
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
     - name: Build test image
-      run: |
-        echo "Building Docker image..."
-        docker build -t api-tests 
+      run: docker buildx build --load -t api-tests 
+ 
     
     - name: List Docker images (debug)
       run: docker image
