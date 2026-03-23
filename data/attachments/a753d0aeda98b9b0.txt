@@ -1,10 +1,10 @@
 INFO     api-tests:base_client.py:19 Initializing BaseClient with base_url=http://eaapi.somee.com
 DEBUG    api-tests:base_client.py:49 Built URL: http://eaapi.somee.com/api/Authenticate/Login
 INFO     api-tests:base_client.py:31 Requesting auth token from http://eaapi.somee.com/api/Authenticate/Login
-DEBUG    api-tests:base_client.py:35 Auth response status=200, body={"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzQyODkwODMsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzcxIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNzEifQ.VqwEYJ_5uzxl0xuc02N8Fiy-O_gvs9bnmYNmC6-pgGY","message":"Success"}
+DEBUG    api-tests:base_client.py:35 Auth response status=200, body={"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzQyODkzNDUsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzcxIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNzEifQ.JrVLKgVVU8rVjP5-iX670bBqr9ysHeGyJKV_UI994Cs","message":"Success"}
 INFO     api-tests:base_client.py:40 Token successfully retrieved
 DEBUG    api-tests:base_client.py:49 Built URL: http://eaapi.somee.com/Components/CreateComponent
 INFO     api-tests:base_client.py:56 Sending POST request to http://eaapi.somee.com/Components/CreateComponent
-DEBUG    api-tests:base_client.py:58 Payload: {'id': 0, 'name': 'contain', 'description': 'Father growth throughout can.', 'productId': 1, 'product': None}
+DEBUG    api-tests:base_client.py:58 Payload: {'id': 0, 'name': 'fear', 'description': 'Character friend thought.', 'productId': 1, 'product': None}
 INFO     api-tests:base_client.py:65 Response 200 from http://eaapi.somee.com/Components/CreateComponent
-DEBUG    api-tests:base_client.py:66 Response body: {"id":10006473,"name":"contain","description":"Father growth throughout can.","productId":1,"product":null}
+DEBUG    api-tests:base_client.py:66 Response body: {"id":10006474,"name":"fear","description":"Character friend thought.","productId":1,"product":null}
