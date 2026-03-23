@@ -42,7 +42,7 @@ jobs:
     - name: Download previous report history
       run: |
         mkdir -p history
-        git fetch origin gh-pages
+        git fetch origin gh-pages || echo "gh-pages branch not found yet"
         git checkout gh-pages -- history || echo "No previous history found"
 
     - name: Run tests in Docker
@@ -51,12 +51,6 @@ jobs:
         docker run --rm \
           -v ${{ github.workspace }}/reports:/tests/reports \
           api-tests ./run.sh
-
-    - name: Upload Allure Report
-      uses: actions/upload-artifact@v4
-      with:
-        name: allure-report
-        path: reports
     
     - name: Merge Allure history
       run: |
@@ -65,6 +59,11 @@ jobs:
           cp -R history/* reports/history/ || true
         fi
 
+    - name: Upload Allure Report
+      uses: actions/upload-artifact@v4
+      with:
+        name: allure-report
+        path: reports
     
     - name: Generate Allure Report
       run: |
