@@ -19,17 +19,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # - name: Set up Python
-    #   uses: actions/setup-python@v4
-    #   with:
-    #     python-version: 3.12
-
-
-    # - name: Install dependencies
-    #   run: |
-    #     python -m pip install --upgrade pip
-    #     pip install -r requirements.txt
-
     - name: Install Allure CLI
       run: |
         sudo apt-get update
@@ -47,9 +36,8 @@ jobs:
     - name: Build test image
       run: docker buildx build --load -t api-tests .
  
-    
     - name: List Docker images (debug)
-      run: docker image
+      run: docker image ls
 
     - name: Run tests in Docker
       run: |
@@ -57,11 +45,6 @@ jobs:
         docker run --rm \
           -v ${{ github.workspace }}/reports:/tests/reports \
           api-tests ./run.sh
-
-    # - name: Run tests
-    #   run: |
-    #     chmod +x run.sh
-    #     ./run.sh
 
     - name: Upload Allure Report
       uses: actions/upload-artifact@v4
