@@ -41,6 +41,15 @@ jobs:
     - name: Verify Allure Installation
       run: allure --version
 
+      
+    - name: Build test image
+      run: |
+        echo "Building Docker image..."
+        docker build -t api-tests 
+    
+    - name: List Docker images (debug)
+      run: docker image
+
     - name: Run tests in Docker
       run: |
         mkdir -p reports
