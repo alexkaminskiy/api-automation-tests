@@ -1,4 +1,5 @@
 import pytest
+import allure
 from client.authenticate_client import AuthenticateClient
 from utils.faker_factory import fake_login
 
@@ -9,13 +10,18 @@ def client():
 
 @pytest.mark.smoke
 def test_login_success(client):
-    payload = fake_login()
-    r = client.login(payload)
+
+    with allure.step("Allure Get fake login data and send login request"):
+        payload = fake_login()
+        r = client.login(payload)
     
-    assert r.status_code == 200
-    assert r.json().get("token") is not None
-    assert r.json().get("message") == "Success"
+    with allure.step("Validate response status and body"):
+
+        assert r.status_code == 200
+        assert r.json().get("token") is not None
+        assert r.json().get("message") == "Success"
 
 def test_get_auth_data(client):
     r = client.get_auth_data()
-    assert r.status_code == 200
+    with allure.step("Validate response status"):
+        assert r.status_code == 200
