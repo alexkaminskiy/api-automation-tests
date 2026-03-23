@@ -38,6 +38,12 @@ jobs:
  
     - name: List Docker images (debug)
       run: docker image ls
+    
+    - name: Download previous report history
+      run: |
+        mkdir -p history
+        git fetch origin gh-pages
+        git checkout gh-pages -- history || echo "No previous history found"
 
     - name: Run tests in Docker
       run: |
@@ -51,7 +57,15 @@ jobs:
       with:
         name: allure-report
         path: reports
+    
+    - name: Merge Allure history
+      run: |
+        mkdir -p reports/history
+        if [ -d "history" ]; then
+          cp -R history/* reports/history/ || true
+        fi
 
+    
     - name: Generate Allure Report
       run: |
         allure generate reports -o allure-report --clean
