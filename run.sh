@@ -1,3 +1,3 @@
 #!/bin/bash
 export PYTHONPATH=$(pwd)
-pytest -vv -s --alluredir=reports
+pytest -n auto -vv -s --alluredir=reports

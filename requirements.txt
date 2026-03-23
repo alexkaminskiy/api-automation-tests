@@ -6,5 +6,6 @@ pytest-xdist>=2.0.0
 pydantic
 jsonschema
 faker
+pytest-xdist
 # Optional: install Allure CLI separately for viewing reports
 # On Windows you can use Scoop or download from https://docs.qameta.io/allure/
