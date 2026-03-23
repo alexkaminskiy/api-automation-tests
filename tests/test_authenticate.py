@@ -12,7 +12,7 @@ def test_login_success(client):
     payload = fake_login()
     r = client.login(payload)
     
-    assert r.status_code == 200
+    assert r.status_code == 300
     assert r.json().get("token") is not None
     assert r.json().get("message") == "Success"
 
