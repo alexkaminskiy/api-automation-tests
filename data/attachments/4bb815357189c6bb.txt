@@ -1,10 +1,10 @@
 INFO     api-tests:base_client.py:19 Initializing BaseClient with base_url=http://eaapi.somee.com
 DEBUG    api-tests:base_client.py:49 Built URL: http://eaapi.somee.com/api/Authenticate/Login
 INFO     api-tests:base_client.py:31 Requesting auth token from http://eaapi.somee.com/api/Authenticate/Login
-DEBUG    api-tests:base_client.py:35 Auth response status=200, body={"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzQyODY5OTEsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzcxIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNzEifQ.LTe4lfHW78vUqRLQaDX01tiQOtNZUBg9jKOHRc4nZM8","message":"Success"}
+DEBUG    api-tests:base_client.py:35 Auth response status=200, body={"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzQyODgyMzAsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzcxIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNzEifQ.YrNOxx2FCVWkSXcsq3yBtPU7aZT56Bn0uhRf9kHBC1k","message":"Success"}
 INFO     api-tests:base_client.py:40 Token successfully retrieved
 DEBUG    api-tests:base_client.py:49 Built URL: http://eaapi.somee.com/api/Authenticate/Login
 INFO     api-tests:base_client.py:56 Sending POST request to http://eaapi.somee.com/api/Authenticate/Login
-DEBUG    api-tests:base_client.py:58 Payload: {'userName': 'tday', 'password': ')0%d9Gr8$b'}
+DEBUG    api-tests:base_client.py:58 Payload: {'userName': 'deborahdunn', 'password': 'D2FM2sS&)K'}
 INFO     api-tests:base_client.py:65 Response 200 from http://eaapi.somee.com/api/Authenticate/Login
-DEBUG    api-tests:base_client.py:66 Response body: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzQyODY5OTEsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzcxIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNzEifQ.LTe4lfHW78vUqRLQaDX01tiQOtNZUBg9jKOHRc4nZM8","message":"Success"}
+DEBUG    api-tests:base_client.py:66 Response body: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzQyODgyMzAsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzcxIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNzEifQ.YrNOxx2FCVWkSXcsq3yBtPU7aZT56Bn0uhRf9kHBC1k","message":"Success"}
