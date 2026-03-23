@@ -1,3 +1,3 @@
 pytest_plugins = [
-    "fixtures.app_fixture"
+    "fixtures.app_fixtures"
 ]
