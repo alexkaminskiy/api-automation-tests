@@ -1,6 +1,10 @@
 import pytest
+from client.authenticate_client import AuthenticateClient
 from utils.faker_factory import fake_login
 
+@pytest.fixture
+def client():
+    return AuthenticateClient()
 
 @pytest.mark.smoke
 def test_login_success(client):

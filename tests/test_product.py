@@ -1,6 +1,10 @@
 import pytest
+from client.product_client import ProductClient
 from utils.faker_factory import fake_product
 
+@pytest.fixture
+def client():
+    return ProductClient()
 
 def test_get_product(client):
     r = client.get_product(1)
