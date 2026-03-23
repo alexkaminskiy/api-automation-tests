@@ -4,9 +4,6 @@ import sys
 from typing import Optional
 from config.settings import BASE_URL, AUTH_USER, AUTH_PASSWORD
 from utils.logger import get_logger
-# ------------------------
-# Logger setup (best practice)
-# ------------------------
 
 
 logger = get_logger()
