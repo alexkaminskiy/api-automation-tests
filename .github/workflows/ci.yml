@@ -41,16 +41,15 @@ jobs:
       run: |
         mkdir -p history
         git fetch origin gh-pages || echo "gh-pages branch not found yet"
-        git checkout gh-pages -- history || echo "No previous history found"
+        git checkout origin/gh-pages -- history || echo "No previous history found"
     
     - name: Merge Allure history
       run: |
         mkdir -p reports/history
-        if [ -d "history" ]; then
-          cp -R history/* reports/history/ || true
-          echo "History merged"
+        if [ -d "history" ] && [ "$(ls -A history)" ]; then
+          cp -R history/* reports/history/
         else
-          echo "No previous history"
+          echo "No history to copy"
         fi
 
     - name: Run tests in Docker
