@@ -38,6 +38,7 @@ class BaseClient:
         token = r.json().get("token")
 
         logger.info("Token successfully retrieved")
+        
         return token
 
     def _build_url(self, path: str) -> str:

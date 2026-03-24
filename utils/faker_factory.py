@@ -1,4 +1,5 @@
 from faker import Faker
+
 fake = Faker()
 
 def fake_login():

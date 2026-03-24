@@ -1,14 +1,14 @@
 FROM python:3.12-slim
 
 # Set working directory inside container
-WORKDIR /tests
+WORKDIR /api-tests
 
 # Copy dependency list
 COPY requirements.txt .
 
 # Install Python dependencies
-RUN python -m pip install --upgrade pip
-RUN pip install --no-cache-dir -r requirements.txt
+RUN python -m pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
 # Copy everything into container (tests + run.sh)
 COPY . .
