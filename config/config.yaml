@@ -1,0 +1,3 @@
+# Base config for API tests
+base_url: "http://eaapi.somee.com/"
+timeout: 10
