@@ -56,13 +56,13 @@ jobs:
       continue-on-error: true
       env:
         BASE_URL: ${{ vars.BASE_URL }}
-        AUTH_USER_NAME: ${{ secrets.AUTH_USER_NAME }}
-        AUTH_PASSWORD: ${{ secrets.AUTH_PASSWORD }}
+        AUTH_USER: ${{ secrets.AUTH_USER }}
+        AUTH_PASSWORD: ${{ secrets.AUTH_USER }}
       run: |
         mkdir -p reports
         docker run --rm \
           -e BASE_URL="$BASE_URL" \
-          -e AUTH_USER_NAME="$AUTH_USER_NAME" \
+          -e AUTH_USER="$AUTH_USER" \
           -e AUTH_PASSWORD="$AUTH_PASSWORD" \
           -v ${{ github.workspace }}/reports:/tests/reports \
           api-tests ./run.sh
