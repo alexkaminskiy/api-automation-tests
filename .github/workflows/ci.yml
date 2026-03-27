@@ -57,7 +57,7 @@ jobs:
       env:
         BASE_URL: ${{ vars.BASE_URL }}
         AUTH_USER: ${{ secrets.AUTH_USER }}
-        AUTH_PASSWORD: ${{ secrets.AUTH_USER }}
+        AUTH_PASSWORD: ${{ secrets.AUTH_PASSWORD }}
       run: |
         mkdir -p reports
         docker run --rm \
