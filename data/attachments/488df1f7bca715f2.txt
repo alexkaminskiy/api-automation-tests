@@ -1,0 +1,13 @@
+INFO     api-tests:base_client.py:19 Initializing BaseClient with base_url=http://eaapi.somee.com
+DEBUG    api-tests:base_client.py:54 Built URL: http://eaapi.somee.com/api/Authenticate/Login
+INFO     api-tests:base_client.py:31 Requesting auth token from http://eaapi.somee.com/api/Authenticate/Login
+INFO     api-tests:base_client.py:33 Using base URL: http://eaapi.somee.com/
+INFO     api-tests:base_client.py:34 Using auth user: admin
+INFO     api-tests:base_client.py:35 Using auth password: ********
+DEBUG    api-tests:base_client.py:39 Auth response status=200, body={"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzQ2MTYxMDgsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzcxIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNzEifQ.Lse3Qo1wAFpOgyDl8RSaVMg5ikviSJdR8vlfvxHy8qU","message":"Success"}
+INFO     api-tests:base_client.py:44 Token successfully retrieved
+DEBUG    api-tests:base_client.py:54 Built URL: http://eaapi.somee.com/Product/Create
+INFO     api-tests:base_client.py:61 Sending POST request to http://eaapi.somee.com/Product/Create
+DEBUG    api-tests:base_client.py:63 Payload: {'productId': 0, 'name': 'responsibility', 'description': 'Really night skin later.', 'price': 361, 'components': None, 'productType': 5}
+INFO     api-tests:base_client.py:70 Response 200 from http://eaapi.somee.com/Product/Create
+DEBUG    api-tests:base_client.py:71 Response body: {"productId":891292,"name":"responsibility","description":"Really night skin later.","price":361,"components":null,"productType":5}
