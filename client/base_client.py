@@ -29,7 +29,7 @@ class BaseClient:
     def _get_token(self) -> str:
         auth_url = self._build_url('/api/Authenticate/Login')
         logger.info(f"Requesting auth token from {auth_url}")
-
+        
         r = requests.post(auth_url, json={"username": AUTH_USER, "password": AUTH_PASSWORD})
 
         logger.debug(f"Auth response status={r.status_code}, body={r.text}")

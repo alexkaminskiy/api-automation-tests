@@ -53,9 +53,16 @@ jobs:
         fi
 
     - name: Run tests in Docker
+      env:
+        BASE_URL: ${{ vars.BASE_URL }}
+        AUTH_USER: ${{ secrets.AUTH_USER }}
+        AUTH_PASSWORD: ${{ secrets.AUTH_PASSWORD }}
       run: |
         mkdir -p reports
         docker run --rm \
+          -e BASE_URL="$BASE_URL" \
+          -e AUTH_USER="$AUTH_USER" \
+          -e AUTH_PASSWORD="$AUTH_PASSWORD" \
           -v ${{ github.workspace }}/reports:/tests/reports \
           api-tests ./run.sh
     
