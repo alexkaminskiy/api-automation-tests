@@ -10,7 +10,7 @@ logger = get_logger()
 
 
 class BaseClient:
-    def __init__(self, base_url: Optional[str] = BASE_URL, token: str = None, timeout: int = 10):
+    def __init__(self, base_url: Optional[str] = BASE_URL, token: Optional[str] = None, timeout: int = 10):
         self.base_url = base_url.rstrip("/") if base_url else ""
         self.timeout = timeout
         self.session = requests.Session()
@@ -68,13 +68,13 @@ class BaseClient:
 
         return resp
 
-    def get(self, path: str, params: dict = None, **kwargs) -> requests.Response:
+    def get(self, path: str, params: Optional[dict] = None, **kwargs) -> requests.Response:
         return self.request("GET", path, params=params, **kwargs)
 
-    def post(self, path: str, json: dict = None, files: dict = None, **kwargs) -> requests.Response:
+    def post(self, path: str, json: Optional[dict] = None, files: Optional[dict] = None, **kwargs) -> requests.Response:
         return self.request("POST", path, json=json, files=files, **kwargs)
 
-    def put(self, path: str, json: dict = None, **kwargs) -> requests.Response:
+    def put(self, path: str, json: Optional[dict] = None, **kwargs) -> requests.Response:
         return self.request("PUT", path, json=json, **kwargs)
 
     def delete(self, path: str, **kwargs) -> requests.Response:
