@@ -9,7 +9,7 @@ def client():
     return AuthenticateClient()
 
 @pytest.mark.smoke
-def test_login_success(client):
+def test_fake_login_success(client):
 
     with allure.step("Allure Get fake login data and send login request"):
         payload = fake_login()

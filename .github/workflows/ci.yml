@@ -70,7 +70,7 @@ jobs:
         AUTH_PASSWORD: ${{ secrets.AUTH_PASSWORD }}
       run: |
         mkdir -p reports
-        docker run --rm \
+        docker run api-tests \
           -e BASE_URL="$BASE_URL" \
           -e AUTH_USER="$AUTH_USER" \
           -e AUTH_PASSWORD="$AUTH_PASSWORD" \
@@ -105,4 +105,6 @@ jobs:
                   ${{ secrets.TEAMS_WEBHOOK_URL }}
     
     - name: Cleanup
-      run: docker rm -f locust-master worker-1 worker-2 worker-3 || true
+      run: |
+        docker rm -f api-tests || true
+        docker rmi -f api-tests || true
