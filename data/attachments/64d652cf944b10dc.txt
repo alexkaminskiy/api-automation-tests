@@ -1,0 +1,4 @@
+INFO     api-tests:base_client.py:20 Initializing BaseClient with base_url=http://eaapi.somee.com
+DEBUG    api-tests:base_client.py:51 Built URL: http://eaapi.somee.com/api/Authenticate/Login
+INFO     api-tests:base_client.py:32 Requesting auth token from http://eaapi.somee.com/api/Authenticate/Login
+DEBUG    api-tests:base_client.py:36 Auth response status=404
