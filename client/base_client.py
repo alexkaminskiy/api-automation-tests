@@ -50,11 +50,27 @@ class BaseClient:
         logger.debug(f"Built URL: {full_url}")
         return full_url
 
+    def mask_sensitive(self, data: dict) -> dict:
+        safe = data.copy()
+        if "Authorization" in safe:
+            token = safe["Authorization"]
+            if isinstance(token, str) and len(token) > 10:
+                safe["Authorization"] = token[:10] + "...***MASKED***"
+            else:
+                safe["Authorization"] = "***MASKED***"
+        return safe
+
     def request(self, method: str, path: str, **kwargs) -> requests.Response:
         url = self._build_url(path)
         kwargs.setdefault("timeout", self.timeout)
 
         logger.info(f"Sending {method.upper()} request to {url}")
+        
+        # Masked headers for logging
+        
+        safe_headers = self.mask_sensitive(self.headers)
+        logger.debug(f"Request headers: {safe_headers}")
+
         if "json" in kwargs:
             logger.debug(f"Payload: {kwargs.get('json')}")
         if "params" in kwargs:
