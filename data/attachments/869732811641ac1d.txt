@@ -1,10 +1,10 @@
 INFO     api-tests:base_client.py:19 Initializing BaseClient with base_url=http://eaapi.somee.com
 DEBUG    api-tests:base_client.py:50 Built URL: http://eaapi.somee.com/api/Authenticate/Login
 INFO     api-tests:base_client.py:31 Requesting auth token from http://eaapi.somee.com/api/Authenticate/Login
-DEBUG    api-tests:base_client.py:35 Auth response status=200, body={"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzQ5NjA2MDIsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzcxIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNzEifQ.orQvK3_Nkg2pYnpIiUVbj4M1q8baSP8dP_NA9LegL3M","message":"Success"}
+DEBUG    api-tests:base_client.py:35 Auth response status=200
 INFO     api-tests:base_client.py:40 Token successfully retrieved
 DEBUG    api-tests:base_client.py:50 Built URL: http://eaapi.somee.com/api/Authenticate/Login
 INFO     api-tests:base_client.py:57 Sending POST request to http://eaapi.somee.com/api/Authenticate/Login
-DEBUG    api-tests:base_client.py:59 Payload: {'userName': 'kimsmith', 'password': 'B9Uwg4dd$x'}
+DEBUG    api-tests:base_client.py:59 Payload: {'userName': 'trandaniel', 'password': 'Ni9Weh3Z&0'}
 INFO     api-tests:base_client.py:66 Response 200 from http://eaapi.somee.com/api/Authenticate/Login
-DEBUG    api-tests:base_client.py:67 Response body: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzQ5NjA2MDMsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzcxIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNzEifQ.g8lML9WMhXIVx7saEzRmCqjLmj3vY8uazzM-aOl7CK8","message":"Success"}
+DEBUG    api-tests:base_client.py:67 Response body: {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzQ5NjMxNjEsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjQ0MzcxIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNzEifQ.wQwhkYtq6o6Vb17PJ0xnv3DWQfzfjIURWxZV8CGy-SE","message":"Success"}
