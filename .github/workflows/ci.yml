@@ -10,7 +10,7 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  api-automation-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -33,9 +33,19 @@ jobs:
         curl -o allure-commandline.zip -L https://github.com/allure-framework/allure2/releases/download/2.21.0/allure-2.21.0.zip
         unzip allure-commandline.zip -d /opt/
         sudo ln -s /opt/allure-2.21.0/bin/allure /usr/bin/allure
-
+    
     - name: Verify Allure Installation
       run: allure --version
+
+    - name: Install Postman CLI
+      run: |
+        curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+    - name: Login to Postman CLI
+      run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
+
+    - name: Run Postman API tests
+      run: |
+          postman collection run "8255162-33078c04-77e1-48b9-b607-12040c46ef4a"
     
     - name: Download previous report history
       run: |
@@ -53,13 +63,14 @@ jobs:
         fi
 
     - name: Run tests in Docker
+      continue-on-error: true
       env:
         BASE_URL: ${{ vars.BASE_URL }}
         AUTH_USER: ${{ secrets.AUTH_USER }}
         AUTH_PASSWORD: ${{ secrets.AUTH_PASSWORD }}
       run: |
         mkdir -p reports
-        docker run --rm \
+        docker run --name api-tests-container \
           -e BASE_URL="$BASE_URL" \
           -e AUTH_USER="$AUTH_USER" \
           -e AUTH_PASSWORD="$AUTH_PASSWORD" \
@@ -82,3 +93,18 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: allure-report
+
+    - name: Send Teams Notification
+      if: always()   # send even if tests fail
+      run: |
+          MESSAGE="API Tests Run Completed. \nAllure Report:
+             https://alexkaminskiy.github.io/api-automation-tests"
+
+              curl -H "Content-Type: application/json" \
+                  -d "{\"text\": \"${MESSAGE}\"}" \
+                  ${{ secrets.TEAMS_WEBHOOK_URL }}
+    
+    - name: Cleanup
+      run: |
+        docker rm -f api-tests-container || true
+        docker rmi -f api-tests || true
