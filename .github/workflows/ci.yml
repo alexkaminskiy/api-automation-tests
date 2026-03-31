@@ -70,7 +70,7 @@ jobs:
         AUTH_PASSWORD: ${{ secrets.AUTH_PASSWORD }}
       run: |
         mkdir -p reports
-        docker run api-tests \
+        docker run api-tests-container \
           -e BASE_URL="$BASE_URL" \
           -e AUTH_USER="$AUTH_USER" \
           -e AUTH_PASSWORD="$AUTH_PASSWORD" \
@@ -106,5 +106,5 @@ jobs:
     
     - name: Cleanup
       run: |
-        docker rm -f api-tests || true
+        docker rm -f api-tests-container || true
         docker rmi -f api-tests || true
