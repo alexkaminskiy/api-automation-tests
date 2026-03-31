@@ -1,0 +1,11 @@
+INFO     api-tests:base_client.py:19 Initializing BaseClient with base_url=http://eaapi.somee.com
+DEBUG    api-tests:base_client.py:50 Built URL: http://eaapi.somee.com/api/Authenticate/Login
+INFO     api-tests:base_client.py:31 Requesting auth token from http://eaapi.somee.com/api/Authenticate/Login
+DEBUG    api-tests:base_client.py:35 Auth response status=200
+INFO     api-tests:base_client.py:40 Token successfully retrieved
+DEBUG    api-tests:base_client.py:50 Built URL: http://eaapi.somee.com/Product/Create
+INFO     api-tests:base_client.py:67 Sending POST request to http://eaapi.somee.com/Product/Create
+DEBUG    api-tests:base_client.py:72 Request headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer eyJ...***MASKED***'}
+DEBUG    api-tests:base_client.py:75 Payload: {'productId': 0, 'name': 'record', 'description': 'Man check energy trip.', 'price': 70, 'components': None, 'productType': 0}
+INFO     api-tests:base_client.py:82 Response 200 from http://eaapi.somee.com/Product/Create
+DEBUG    api-tests:base_client.py:83 Response body: {"productId":891342,"name":"record","description":"Man check energy trip.","price":70,"components":null,"productType":0}
