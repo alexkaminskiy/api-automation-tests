@@ -20,7 +20,7 @@ class BaseClient:
         self.token = token if token else self._get_token()
 
     @property
-    def headers(self):
+    def headers(self) -> dict:
         h = {"Content-Type": "application/json"}
         if self.token:
             h["Authorization"] = f"Bearer {self.token}"
@@ -32,7 +32,7 @@ class BaseClient:
         
         r = requests.post(auth_url, json={"username": AUTH_USER, "password": AUTH_PASSWORD})
 
-        logger.debug(f"Auth response status={r.status_code}, body={r.text}")
+        logger.debug(f"Auth response status={r.status_code}")
 
         r.raise_for_status()
         token = r.json().get("token")
