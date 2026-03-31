@@ -1,5 +1,7 @@
 import logging
 import sys
+import re
+import json
 
 def get_logger(name="api-tests"):
     logger = logging.getLogger(name)

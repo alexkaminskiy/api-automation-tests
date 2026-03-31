@@ -4,6 +4,7 @@ import sys
 from typing import Optional
 from config.settings import BASE_URL, AUTH_USER, AUTH_PASSWORD
 from utils.logger import get_logger
+from utils.helper import sanitize_data
 
 
 logger = get_logger()
@@ -67,7 +68,7 @@ class BaseClient:
         logger.info(f"Sending {method.upper()} request to {url}")
         
         # Masked headers for logging
-        
+
         safe_headers = self.mask_sensitive(self.headers)
         logger.debug(f"Request headers: {safe_headers}")
 
@@ -80,7 +81,10 @@ class BaseClient:
         self.last_response = resp
 
         logger.info(f"Response {resp.status_code} from {url}")
-        logger.debug(f"Response body: {resp.text}")
+
+        safe_text = sanitize_data(resp.text)
+        logger.debug(f"Response body: {safe_text}")
+        # logger.debug(f"Response body: {resp.text}")
 
         return resp
 
